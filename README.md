@@ -7,3 +7,15 @@
 ## 基本使用
 可在程序运行前以及程序运行过程中加载rasp-agent探针
 ### 运行前
+将我们的jar包放入指定目录，在VM选项中加入相关配置：-javaagent:target\out\java_agent.jar
+运行程序即可成功加载
+![图片](https://github.com/user-attachments/assets/143e4da7-0000-46f4-9f83-8169114eca0d)
+### 运行中
+jps -l 获取程序进程ID
+    public static void main(String[] args) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException {
+        VirtualMachine target = VirtualMachine.attach("29180");
+        target.loadAgent("D:\\Study_Project\\agentproject\\target\\agentproject-1.0-SNAPSHOT-jar-with-dependencies.jar");
+        target.detach();
+    }
+使用如下代码远程加载
+
